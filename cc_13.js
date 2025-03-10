@@ -12,22 +12,26 @@ function createElement(name, position) {
     const paragraph = document.createElement('h4');
     paragraph.textContent = position;
 
-    //Remove Button
-    const removeButton = document.createElement('button');
-    removeButton.textContent = 'abolish';
-    removeButton.addEventListener('click',() => {
-        employeeCard.remove();
-    })
-
     //Edit Button
     const editButton = document.createElement('button');
     editButton.textContent = 'Edit';
 
+    //Remove Button
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'abolish';
+    
+    //Task 4
+    removeButton.addEventListener('click',(event) => {
+        console.log('Abolish button clicked for an employee');
+        employeeCard.remove();
+        event.stopPropagation();
+    });
+
     //Appending Elements
     employeeCard.appendChild(heading);
     employeeCard.appendChild(paragraph);
-    employeeCard.appendChild(removeButton);
     employeeCard.appendChild(editButton);
+    employeeCard.appendChild(removeButton);
 
     document.getElementById('employeeContainer').appendChild(employeeCard)
 }
