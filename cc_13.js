@@ -37,4 +37,13 @@ createElement('Alberto', 'Finance Manager');
 createElement('Marvin', 'Accounting');
 createElement('Enrique', 'Marketing Director');
 
-//Task 2 
+//Task 3 Converting NodeLists to Arrays for Bulk Updates
+function bulkUpdate () {
+    const cards = document.querySelectorAll('.employee-card');
+    const cardArray = Array.from(cards);
+
+    cardArray.forEach(card => {
+        card.style.backgroundColor = 'rgb(213, 176, 231)'
+    });//function for bulk updating and card color
+}
+bulkUpdate();
