@@ -16,16 +16,49 @@ function createElement(name, position) {
     const editButton = document.createElement('button');
     editButton.textContent = 'Edit';
 
+    //Task 5 Inline Editing for Employee Cards-----------------------------------
+    editButton.addEventListener('click', function(){
+        const nameEdit = document.createElement('input');
+        nameEdit.setAttribute('type','text')
+        nameEdit.value = heading.textContent;
+        
+        const positionEdit = document.createElement('input');
+        positionEdit.setAttribute('type','text');
+        positionEdit.value = paragraph.textContent;
+
+        const saveButton = document.createElement('button');
+        saveButton.textContent = 'Save';
+
+        //Appending Functions
+        employeeCard.innerHTML='';
+        employeeCard.appendChild(nameEdit);
+        employeeCard.appendChild(positionEdit);
+        employeeCard.appendChild(saveButton);
+
+        //Making Save Button Respond
+        saveButton.addEventListener('click', function() {
+            heading.textContent = nameEdit.value;
+            paragraph.textContent = positionEdit.value;
+            
+            employeeCard.innerHTML = '';
+            employeeCard.appendChild(heading);
+            employeeCard.appendChild(paragraph);
+            employeeCard.appendChild(editButton);
+            employeeCard.appendChild(removeButton);
+        });
+    });//End of Task 5-------------------------------------------------------------
+
     //Remove Button
     const removeButton = document.createElement('button');
-    removeButton.textContent = 'abolish';
+    removeButton.textContent = 'Abolish';
     
-    //Task 4
+    //Task 4 Implementing Removal of Employee Cards with Event Bubbling-----------
     removeButton.addEventListener('click',(event) => {
         console.log('Abolish button clicked for an employee');
         employeeCard.remove();
         event.stopPropagation();
     });
+    //End of Task 4----------------------------------------------------------------
 
     //Appending Elements
     employeeCard.appendChild(heading);
